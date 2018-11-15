@@ -73,6 +73,16 @@ namespace QuanLiDichVuChoThueXe.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Groups_Meeting_Dark_icon {
+            get {
+                object obj = ResourceManager.GetObject("Groups-Meeting-Dark-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap img_557896 {
             get {
                 object obj = ResourceManager.GetObject("img_557896", resourceCulture);

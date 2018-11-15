@@ -92,13 +92,6 @@ namespace QuanLiDichVuChoThueXe
             dataGridView1.Controls.Clear();
         }
 
-        private void trangChủToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            formmain main = new formmain();
-            main.Show();
-        }
-
         private void searching_Load(object sender, EventArgs e)
         {
             for (int i = 0; i < dataGridView1.ColumnCount; i++)

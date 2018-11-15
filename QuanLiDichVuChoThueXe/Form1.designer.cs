@@ -47,6 +47,13 @@
             this.barMdiChildrenListItem2 = new DevExpress.XtraBars.BarMdiChildrenListItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonGalleryBarItem1 = new DevExpress.XtraBars.RibbonGalleryBarItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -61,12 +68,13 @@
             // ribbonPageGroup4
             // 
             this.ribbonPageGroup4.ItemLinks.Add(this.btnNguoiDung);
+            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem4);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "Danh Mục";
+            this.ribbonPageGroup4.Text = "Account";
             // 
             // btnNguoiDung
             // 
-            this.btnNguoiDung.Caption = "Quản lí tài khoản nhân viên";
+            this.btnNguoiDung.Caption = "Quản lí nhân viên";
             this.btnNguoiDung.Id = 8;
             this.btnNguoiDung.ImageOptions.LargeImage = global::QuanLiDichVuChoThueXe.Properties.Resources.user_male_icon;
             this.btnNguoiDung.LargeWidth = 100;
@@ -152,7 +160,7 @@
             // 
             this.btnDoiMatKhau.Caption = "Đổi Mật Khẩu";
             this.btnDoiMatKhau.Id = 4;
-            this.btnDoiMatKhau.ImageOptions.LargeImage = global::QuanLiDichVuChoThueXe.Properties.Resources.img_557896;
+            this.btnDoiMatKhau.ImageOptions.LargeImage = global::QuanLiDichVuChoThueXe.Properties.Resources.Users_Change_User_icon2;
             this.btnDoiMatKhau.LargeWidth = 100;
             this.btnDoiMatKhau.Name = "btnDoiMatKhau";
             this.btnDoiMatKhau.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDoiMatKhau_ItemClick);
@@ -192,9 +200,13 @@
             this.btnNguoiDung,
             this.btnXemDanhSachXeChoThue,
             this.barMdiChildrenListItem1,
-            this.barMdiChildrenListItem2});
+            this.barMdiChildrenListItem2,
+            this.barButtonItem1,
+            this.ribbonGalleryBarItem1,
+            this.barButtonItem4,
+            this.barButtonItem5});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 13;
+            this.ribbonControl1.MaxItemId = 17;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.btnCauHinh,
@@ -206,6 +218,54 @@
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 13;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // ribbonGalleryBarItem1
+            // 
+            this.ribbonGalleryBarItem1.Caption = "ribbonGalleryBarItem1";
+            this.ribbonGalleryBarItem1.Id = 14;
+            this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Quản lí tài khoản nhân viên";
+            this.barButtonItem2.Id = 8;
+            this.barButtonItem2.ImageOptions.LargeImage = global::QuanLiDichVuChoThueXe.Properties.Resources.user_male_icon;
+            this.barButtonItem2.LargeWidth = 100;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnNguoiDung);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "Danh Mục";
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Quản lí tài khoản nhân viên";
+            this.barButtonItem3.Id = 8;
+            this.barButtonItem3.ImageOptions.LargeImage = global::QuanLiDichVuChoThueXe.Properties.Resources.user_male_icon;
+            this.barButtonItem3.LargeWidth = 100;
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Quản lí khách hàng";
+            this.barButtonItem4.Id = 15;
+            this.barButtonItem4.ImageOptions.LargeImage = global::QuanLiDichVuChoThueXe.Properties.Resources.Groups_Meeting_Dark_icon;
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "barButtonItem5";
+            this.barButtonItem5.Id = 16;
+            this.barButtonItem5.Name = "barButtonItem5";
             // 
             // Form1
             // 
@@ -247,6 +307,13 @@
         private DevExpress.XtraBars.BarMdiChildrenListItem barMdiChildrenListItem2;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.RibbonGalleryBarItem ribbonGalleryBarItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }
 

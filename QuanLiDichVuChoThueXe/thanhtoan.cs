@@ -20,14 +20,6 @@ namespace QuanLiDichVuChoThueXe
         {
             InitializeComponent();
         }
-
-        private void trangChủToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            formmain main = new formmain();
-            main.Show();
-        }
-
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (count == 1)

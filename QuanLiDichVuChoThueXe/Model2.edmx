@@ -31,7 +31,6 @@ warning 6002: The table/view 'QL_Thuexeoto.dbo.ChucVu' does not have a primary k
           <Property Name="CMND" Type="nchar" MaxLength="12" Nullable="false" />
           <Property Name="SDT" Type="nchar" MaxLength="12" Nullable="false" />
           <Property Name="BangLai" Type="char" MaxLength="2" />
-          <Property Name="Ghichu" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="tbl_LOAIXE">
           <Key>
@@ -222,8 +221,6 @@ warning 6002: The table/view 'QL_Thuexeoto.dbo.ChucVu' does not have a primary k
           <Property Name="CMND" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="true" />
           <Property Name="SDT" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="true" />
           <Property Name="BangLai" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="Ghichu" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_PHIEUTHUE" Relationship="QL_ThuexeotoModel1.FK_PHIEUTHUE_KHACHHANG" FromRole="tbl_KHACHHANG" ToRole="tbl_PHIEUTHUE" />
         </EntityType>
         <EntityType Name="tbl_LOAIXE">
           <Key>
@@ -354,7 +351,6 @@ warning 6002: The table/view 'QL_Thuexeoto.dbo.ChucVu' does not have a primary k
           <EntitySetMapping Name="tbl_KHACHHANG">
             <EntityTypeMapping TypeName="QL_ThuexeotoModel1.tbl_KHACHHANG">
               <MappingFragment StoreEntitySet="tbl_KHACHHANG">
-                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
                 <ScalarProperty Name="BangLai" ColumnName="BangLai" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="CMND" ColumnName="CMND" />

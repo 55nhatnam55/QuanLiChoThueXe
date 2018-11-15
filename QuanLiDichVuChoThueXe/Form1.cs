@@ -87,5 +87,12 @@ namespace QuanLiDichVuChoThueXe
             frmLogin.Show();
             this.Close();
         }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FormThongTinKhacHang f1 = new FormThongTinKhacHang();
+            f1.MdiParent = this;
+            f1.Show();
+        }
     }
 }

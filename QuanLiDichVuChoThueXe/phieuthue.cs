@@ -154,13 +154,6 @@ namespace QuanLiDichVuChoThueXe
             return null;
         }
 
-        private void trangChủToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            formmain main = new formmain();
-            main.Show();
-        }
-
         private void btnKiemtrabanglai_Click(object sender, EventArgs e)
         {
             lbBangLai.Text = kiemtrabanglaiKH(txtmkh.Text.Trim());

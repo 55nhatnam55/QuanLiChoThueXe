@@ -136,12 +136,5 @@ namespace QuanLiDichVuChoThueXe
 
 
         }
-
-        private void trangChủToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            formmain main = new formmain();
-            main.Show();
-        }
     }
 }
