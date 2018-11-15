@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QL_ThuexeotoModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QL_Thuexeoto.dbo.ChucVu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ChucVu">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="IDchucvu" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDchucvu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_BANGLAI">
+          <Key>
+            <PropertyRef Name="LoaiXe" />
+          </Key>
+          <Property Name="LoaiXe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="YeuCauBangLai" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="tbl_KHACHHANG">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="TenKH" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="CMND" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="SDT" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="BangLai" Type="char" MaxLength="2" />
+          <Property Name="Ghichu" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_LOAIXE">
+          <Key>
+            <PropertyRef Name="MaLoai" />
+          </Key>
+          <Property Name="MaLoai" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HangXe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soluong" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_PHIEUTHUE">
+          <Key>
+            <PropertyRef Name="MaPhieu" />
+          </Key>
+          <Property Name="MaPhieu" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="SoXe" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="MaKH" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="NgayLapPhieu" Type="date" />
+          <Property Name="SoNgayMuon" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_THONGTINXE">
+          <Key>
+            <PropertyRef Name="SoXe" />
+          </Key>
+          <Property Name="SoXe" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="MaLoai" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenXe" Type="nvarchar" MaxLength="50" />
+          <Property Name="DonGiaNgay" Type="int" />
+          <Property Name="ChuXe" Type="nvarchar" MaxLength="50" />
+          <Property Name="NamSX" Type="int" />
+        </EntityType>
+        <EntityType Name="User_Login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDn" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Matkhau" Type="varchar" MaxLength="50" />
+          <Property Name="TenNhanVien" Type="nvarchar" MaxLength="100" />
+          <Property Name="SDT" Type="bigint" />
+          <Property Name="DiaChi" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Luong" Type="bigint" />
+          <Property Name="ChucVu" Type="int" />
+        </EntityType>
+        <Association Name="FK_ChucVu_User_Login">
+          <End Role="User_Login" Type="Self.User_Login" Multiplicity="1" />
+          <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Login">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ChucVu">
+              <PropertyRef Name="IDchucvu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOAIXE_BANGLAI">
+          <End Role="tbl_BANGLAI" Type="Self.tbl_BANGLAI" Multiplicity="1" />
+          <End Role="tbl_LOAIXE" Type="Self.tbl_LOAIXE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_BANGLAI">
+              <PropertyRef Name="LoaiXe" />
+            </Principal>
+            <Dependent Role="tbl_LOAIXE">
+              <PropertyRef Name="MaLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHIEUTHUE_KHACHHANG">
+          <End Role="tbl_KHACHHANG" Type="Self.tbl_KHACHHANG" Multiplicity="1" />
+          <End Role="tbl_PHIEUTHUE" Type="Self.tbl_PHIEUTHUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_KHACHHANG">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="tbl_PHIEUTHUE">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PHIEUTHUE_tbl_THONGTINXE">
+          <End Role="tbl_THONGTINXE" Type="Self.tbl_THONGTINXE" Multiplicity="1" />
+          <End Role="tbl_PHIEUTHUE" Type="Self.tbl_PHIEUTHUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_THONGTINXE">
+              <PropertyRef Name="SoXe" />
+            </Principal>
+            <Dependent Role="tbl_PHIEUTHUE">
+              <PropertyRef Name="SoXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="thanhtoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="makh" Type="char" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="makhachhang" Type="char" MaxLength="4" />
+                <Property Name="CMND" Type="nchar" MaxLength="12" />
+                <Property Name="phibaoduong" Type="money" />
+                <Property Name="tongtien" Type="money" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="QL_ThuexeotoModel1StoreContainer">
+          <EntitySet Name="tbl_BANGLAI" EntityType="Self.tbl_BANGLAI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_KHACHHANG" EntityType="Self.tbl_KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_LOAIXE" EntityType="Self.tbl_LOAIXE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PHIEUTHUE" EntityType="Self.tbl_PHIEUTHUE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_THONGTINXE" EntityType="Self.tbl_THONGTINXE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Login" EntityType="Self.User_Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChucVu" EntityType="Self.ChucVu" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChucVu].[id] AS [id], 
+    [ChucVu].[IDchucvu] AS [IDchucvu]
+    FROM [dbo].[ChucVu] AS [ChucVu]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ChucVu_User_Login" Association="Self.FK_ChucVu_User_Login">
+            <End Role="User_Login" EntitySet="User_Login" />
+            <End Role="ChucVu" EntitySet="ChucVu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOAIXE_BANGLAI" Association="Self.FK_LOAIXE_BANGLAI">
+            <End Role="tbl_BANGLAI" EntitySet="tbl_BANGLAI" />
+            <End Role="tbl_LOAIXE" EntitySet="tbl_LOAIXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHIEUTHUE_KHACHHANG" Association="Self.FK_PHIEUTHUE_KHACHHANG">
+            <End Role="tbl_KHACHHANG" EntitySet="tbl_KHACHHANG" />
+            <End Role="tbl_PHIEUTHUE" EntitySet="tbl_PHIEUTHUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PHIEUTHUE_tbl_THONGTINXE" Association="Self.FK_tbl_PHIEUTHUE_tbl_THONGTINXE">
+            <End Role="tbl_THONGTINXE" EntitySet="tbl_THONGTINXE" />
+            <End Role="tbl_PHIEUTHUE" EntitySet="tbl_PHIEUTHUE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QL_ThuexeotoModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="thanhtoan_Result">
+          <Property Name="makhachhang" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="CMND" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="phibaoduong" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="tongtien" Type="Decimal" Precision="19" Scale="4" />
+        </ComplexType>
+        <EntityContainer Name="QL_ThuexeotoEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="thanhtoan" IsComposable="true" ReturnType="Collection(QL_ThuexeotoModel1.thanhtoan_Result)">
+          <Parameter Name="makh" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tbl_BANGLAI" EntityType="QL_ThuexeotoModel1.tbl_BANGLAI" />
+          <EntitySet Name="tbl_KHACHHANG" EntityType="QL_ThuexeotoModel1.tbl_KHACHHANG" />
+          <EntitySet Name="tbl_LOAIXE" EntityType="QL_ThuexeotoModel1.tbl_LOAIXE" />
+          <EntitySet Name="tbl_PHIEUTHUE" EntityType="QL_ThuexeotoModel1.tbl_PHIEUTHUE" />
+          <EntitySet Name="tbl_THONGTINXE" EntityType="QL_ThuexeotoModel1.tbl_THONGTINXE" />
+          <EntitySet Name="User_Login" EntityType="QL_ThuexeotoModel1.User_Login" />
+          <EntitySet Name="ChucVus" EntityType="QL_ThuexeotoModel1.ChucVu" />
+          <AssociationSet Name="FK_LOAIXE_BANGLAI" Association="QL_ThuexeotoModel1.FK_LOAIXE_BANGLAI">
+            <End Role="tbl_BANGLAI" EntitySet="tbl_BANGLAI" />
+            <End Role="tbl_LOAIXE" EntitySet="tbl_LOAIXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHIEUTHUE_KHACHHANG" Association="QL_ThuexeotoModel1.FK_PHIEUTHUE_KHACHHANG">
+            <End Role="tbl_KHACHHANG" EntitySet="tbl_KHACHHANG" />
+            <End Role="tbl_PHIEUTHUE" EntitySet="tbl_PHIEUTHUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PHIEUTHUE_tbl_THONGTINXE" Association="QL_ThuexeotoModel1.FK_tbl_PHIEUTHUE_tbl_THONGTINXE">
+            <End Role="tbl_THONGTINXE" EntitySet="tbl_THONGTINXE" />
+            <End Role="tbl_PHIEUTHUE" EntitySet="tbl_PHIEUTHUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChucVu_User_Login" Association="QL_ThuexeotoModel1.FK_ChucVu_User_Login">
+            <End Role="User_Login" EntitySet="User_Login" />
+            <End Role="ChucVu" EntitySet="ChucVus" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_BANGLAI">
+          <Key>
+            <PropertyRef Name="LoaiXe" />
+          </Key>
+          <Property Name="LoaiXe" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YeuCauBangLai" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_LOAIXE" Relationship="QL_ThuexeotoModel1.FK_LOAIXE_BANGLAI" FromRole="tbl_BANGLAI" ToRole="tbl_LOAIXE" />
+        </EntityType>
+        <EntityType Name="tbl_KHACHHANG">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="TenKH" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="CMND" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="SDT" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="BangLai" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Ghichu" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_PHIEUTHUE" Relationship="QL_ThuexeotoModel1.FK_PHIEUTHUE_KHACHHANG" FromRole="tbl_KHACHHANG" ToRole="tbl_PHIEUTHUE" />
+        </EntityType>
+        <EntityType Name="tbl_LOAIXE">
+          <Key>
+            <PropertyRef Name="MaLoai" />
+          </Key>
+          <Property Name="MaLoai" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HangXe" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soluong" Type="Int32" />
+          <NavigationProperty Name="tbl_BANGLAI" Relationship="QL_ThuexeotoModel1.FK_LOAIXE_BANGLAI" FromRole="tbl_LOAIXE" ToRole="tbl_BANGLAI" />
+        </EntityType>
+        <EntityType Name="tbl_PHIEUTHUE">
+          <Key>
+            <PropertyRef Name="MaPhieu" />
+          </Key>
+          <Property Name="MaPhieu" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="SoXe" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="MaKH" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="NgayLapPhieu" Type="DateTime" Precision="0" />
+          <Property Name="SoNgayMuon" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_THONGTINXE">
+          <Key>
+            <PropertyRef Name="SoXe" />
+          </Key>
+          <Property Name="SoXe" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="MaLoai" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenXe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DonGiaNgay" Type="Int32" />
+          <Property Name="ChuXe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NamSX" Type="Int32" />
+        </EntityType>
+        <EntityType Name="User_Login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TenNhanVien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="Int64" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Luong" Type="Int64" />
+          <Property Name="ChucVu" Type="Int32" />
+          <NavigationProperty Name="ChucVus" Relationship="QL_ThuexeotoModel1.FK_ChucVu_User_Login" FromRole="User_Login" ToRole="ChucVu" />
+        </EntityType>
+        <EntityType Name="ChucVu">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="IDchucvu" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDchucvu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User_Login" Relationship="QL_ThuexeotoModel1.FK_ChucVu_User_Login" FromRole="ChucVu" ToRole="User_Login" />
+        </EntityType>
+        <Association Name="FK_LOAIXE_BANGLAI">
+          <End Type="QL_ThuexeotoModel1.tbl_BANGLAI" Role="tbl_BANGLAI" Multiplicity="1" />
+          <End Type="QL_ThuexeotoModel1.tbl_LOAIXE" Role="tbl_LOAIXE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_BANGLAI">
+              <PropertyRef Name="LoaiXe" />
+            </Principal>
+            <Dependent Role="tbl_LOAIXE">
+              <PropertyRef Name="MaLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHIEUTHUE_KHACHHANG">
+          <End Type="QL_ThuexeotoModel1.tbl_KHACHHANG" Role="tbl_KHACHHANG" Multiplicity="1" />
+          <End Type="QL_ThuexeotoModel1.tbl_PHIEUTHUE" Role="tbl_PHIEUTHUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_KHACHHANG">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="tbl_PHIEUTHUE">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PHIEUTHUE_tbl_THONGTINXE">
+          <End Type="QL_ThuexeotoModel1.tbl_THONGTINXE" Role="tbl_THONGTINXE" Multiplicity="1" />
+          <End Type="QL_ThuexeotoModel1.tbl_PHIEUTHUE" Role="tbl_PHIEUTHUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_THONGTINXE">
+              <PropertyRef Name="SoXe" />
+            </Principal>
+            <Dependent Role="tbl_PHIEUTHUE">
+              <PropertyRef Name="SoXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChucVu_User_Login">
+          <End Type="QL_ThuexeotoModel1.User_Login" Role="User_Login" Multiplicity="1" />
+          <End Type="QL_ThuexeotoModel1.ChucVu" Role="ChucVu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Login">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ChucVu">
+              <PropertyRef Name="IDchucvu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QL_ThuexeotoModel1StoreContainer" CdmEntityContainer="QL_ThuexeotoEntities">
+          <FunctionImportMapping FunctionName="QL_ThuexeotoModel1.Store.thanhtoan" FunctionImportName="thanhtoan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_ThuexeotoModel1.thanhtoan_Result">
+                <ScalarProperty Name="makhachhang" ColumnName="makhachhang" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="phibaoduong" ColumnName="phibaoduong" />
+                <ScalarProperty Name="tongtien" ColumnName="tongtien" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_BANGLAI">
+            <EntityTypeMapping TypeName="QL_ThuexeotoModel1.tbl_BANGLAI">
+              <MappingFragment StoreEntitySet="tbl_BANGLAI">
+                <ScalarProperty Name="YeuCauBangLai" ColumnName="YeuCauBangLai" />
+                <ScalarProperty Name="LoaiXe" ColumnName="LoaiXe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_KHACHHANG">
+            <EntityTypeMapping TypeName="QL_ThuexeotoModel1.tbl_KHACHHANG">
+              <MappingFragment StoreEntitySet="tbl_KHACHHANG">
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+                <ScalarProperty Name="BangLai" ColumnName="BangLai" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_LOAIXE">
+            <EntityTypeMapping TypeName="QL_ThuexeotoModel1.tbl_LOAIXE">
+              <MappingFragment StoreEntitySet="tbl_LOAIXE">
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+                <ScalarProperty Name="HangXe" ColumnName="HangXe" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PHIEUTHUE">
+            <EntityTypeMapping TypeName="QL_ThuexeotoModel1.tbl_PHIEUTHUE">
+              <MappingFragment StoreEntitySet="tbl_PHIEUTHUE">
+                <ScalarProperty Name="SoNgayMuon" ColumnName="SoNgayMuon" />
+                <ScalarProperty Name="NgayLapPhieu" ColumnName="NgayLapPhieu" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="SoXe" ColumnName="SoXe" />
+                <ScalarProperty Name="MaPhieu" ColumnName="MaPhieu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_THONGTINXE">
+            <EntityTypeMapping TypeName="QL_ThuexeotoModel1.tbl_THONGTINXE">
+              <MappingFragment StoreEntitySet="tbl_THONGTINXE">
+                <ScalarProperty Name="NamSX" ColumnName="NamSX" />
+                <ScalarProperty Name="ChuXe" ColumnName="ChuXe" />
+                <ScalarProperty Name="DonGiaNgay" ColumnName="DonGiaNgay" />
+                <ScalarProperty Name="TenXe" ColumnName="TenXe" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="SoXe" ColumnName="SoXe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Login">
+            <EntityTypeMapping TypeName="QL_ThuexeotoModel1.User_Login">
+              <MappingFragment StoreEntitySet="User_Login">
+                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+                <ScalarProperty Name="Luong" ColumnName="Luong" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
+                <ScalarProperty Name="Matkhau" ColumnName="Matkhau" />
+                <ScalarProperty Name="TenDn" ColumnName="TenDn" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChucVus">
+            <EntityTypeMapping TypeName="QL_ThuexeotoModel1.ChucVu">
+              <MappingFragment StoreEntitySet="ChucVu">
+                <ScalarProperty Name="IDchucvu" ColumnName="IDchucvu" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
