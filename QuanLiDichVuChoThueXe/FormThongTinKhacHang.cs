@@ -6,11 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.XtraEditors;
 using System.Windows.Forms;
 
 namespace QuanLiDichVuChoThueXe
 {
-    public partial class FormThongTinKhacHang : Form
+    public partial class FormThongTinKhacHang : DevExpress.XtraEditors.XtraForm
     {
         private QL_ThuexeotoEntities connectdb = new QL_ThuexeotoEntities();
         public FormThongTinKhacHang()

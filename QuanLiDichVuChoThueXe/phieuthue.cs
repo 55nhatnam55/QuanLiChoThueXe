@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace QuanLiDichVuChoThueXe
 {
-    public partial class phieuthue : Form
+    public partial class phieuthue : DevExpress.XtraEditors.XtraForm
     {
         public phieuthue()
         {

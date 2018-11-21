@@ -136,6 +136,14 @@ warning 6002: The table/view 'QL_Thuexeoto.dbo.ChucVu' does not have a primary k
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="ThongKePhieuThueTheoThoiGian" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ngaybd" Type="datetime" Mode="In" />
+          <Parameter Name="ngaykt" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="TopXethue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ngaybd" Type="datetime" Mode="In" />
+          <Parameter Name="ngaykt" Type="datetime" Mode="In" />
+        </Function>
         <EntityContainer Name="QL_ThuexeotoModel1StoreContainer">
           <EntitySet Name="tbl_BANGLAI" EntityType="Self.tbl_BANGLAI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_KHACHHANG" EntityType="Self.tbl_KHACHHANG" Schema="dbo" store:Type="Tables" />
@@ -203,6 +211,14 @@ warning 6002: The table/view 'QL_Thuexeoto.dbo.ChucVu' does not have a primary k
             <End Role="User_Login" EntitySet="User_Login" />
             <End Role="ChucVu" EntitySet="ChucVus" />
           </AssociationSet>
+          <FunctionImport Name="ThongKePhieuThueTheoThoiGian" ReturnType="Collection(QL_ThuexeotoModel1.ThongKePhieuThueTheoThoiGian_Result)">
+            <Parameter Name="ngaybd" Mode="In" Type="DateTime" />
+            <Parameter Name="ngaykt" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="TopXethue" ReturnType="Collection(QL_ThuexeotoModel1.TopXethue_Result)">
+            <Parameter Name="ngaybd" Mode="In" Type="DateTime" />
+            <Parameter Name="ngaykt" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_BANGLAI">
           <Key>
@@ -324,6 +340,17 @@ warning 6002: The table/view 'QL_Thuexeoto.dbo.ChucVu' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="ThongKePhieuThueTheoThoiGian_Result">
+          <Property Type="String" Name="MaPhieu" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="SoXe" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="MaKH" Nullable="false" MaxLength="4" />
+          <Property Type="DateTime" Name="NgayLapPhieu" Nullable="true" />
+          <Property Type="Int32" Name="SoNgayMuon" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="TopXethue_Result">
+          <Property Type="String" Name="SoXe" Nullable="false" MaxLength="4" />
+          <Property Type="Int32" Name="Solanthue" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -414,6 +441,25 @@ warning 6002: The table/view 'QL_Thuexeoto.dbo.ChucVu' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ThongKePhieuThueTheoThoiGian" FunctionName="QL_ThuexeotoModel1.Store.ThongKePhieuThueTheoThoiGian">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_ThuexeotoModel1.ThongKePhieuThueTheoThoiGian_Result">
+                <ScalarProperty Name="MaPhieu" ColumnName="MaPhieu" />
+                <ScalarProperty Name="SoXe" ColumnName="SoXe" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="NgayLapPhieu" ColumnName="NgayLapPhieu" />
+                <ScalarProperty Name="SoNgayMuon" ColumnName="SoNgayMuon" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TopXethue" FunctionName="QL_ThuexeotoModel1.Store.TopXethue">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_ThuexeotoModel1.TopXethue_Result">
+                <ScalarProperty Name="SoXe" ColumnName="SoXe" />
+                <ScalarProperty Name="Solanthue" ColumnName="Solanthue" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,12 +21,25 @@ namespace QuanLiDichVuChoThueXe
         {
 
         }
-
+        private bool ExistForm(XtraForm form)
+        {
+            foreach (var child in MdiChildren)
+            {
+                if (child.Name == form.Name)
+                {
+                    child.Activate();
+                    return true;
+                }
+            }
+            return false;
+           
+        }
         private void btnDoiMatKhau_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FormDoiMatKhau f1 = new FormDoiMatKhau();
-            f1.MdiParent = this;
-            f1.Show();
+            var form = new FormDoiMatKhau();
+            if (ExistForm(form)) return;
+            form.MdiParent = this;
+            form.Show();
         }
 
         private void barDangNhap_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -47,37 +61,43 @@ namespace QuanLiDichVuChoThueXe
 
         private void btnLapPhieuThu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            phieuthue f1 = new phieuthue();
-            f1.MdiParent = this;
-            f1.Show();
+            var form = new phieuthue();
+            if (ExistForm(form)) return;
+            form.MdiParent = this;
+            form.Show();
+
         }
 
         private void btnPhieuThanhToan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            thanhtoan f1 = new thanhtoan();
-            f1.MdiParent = this;
-            f1.Show();
+            var form = new thanhtoan();
+            if (ExistForm(form)) return;
+            form.MdiParent = this;
+            form.Show();
         }
 
         private void btnTraCuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            searching f1 = new searching();
-            f1.MdiParent = this;
-            f1.Show();
+            var form = new searching();
+            if (ExistForm(form)) return;
+            form.MdiParent = this;
+            form.Show();
         }
 
         private void btnXemDanhSachXeChoThue_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            danhsachthuexe f1 = new danhsachthuexe();
-            f1.MdiParent = this;
-            f1.Show();
+            var form = new danhsachthuexe();
+            if (ExistForm(form)) return;
+            form.MdiParent = this;
+            form.Show();
         }
 
         private void btnNguoiDung_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmThongTinNguoiDung f1 = new frmThongTinNguoiDung();
-            f1.MdiParent = this;
-            f1.Show();
+            var form = new frmThongTinNguoiDung();
+            if (ExistForm(form)) return;
+            form.MdiParent = this;
+            form.Show();
         }
 
         private void btnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -90,9 +110,18 @@ namespace QuanLiDichVuChoThueXe
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FormThongTinKhacHang f1 = new FormThongTinKhacHang();
-            f1.MdiParent = this;
-            f1.Show();
+            var form = new FormThongTinKhacHang();
+            if (ExistForm(form)) return;
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var form = new FrmBaoCao();
+            if (ExistForm(form)) return;
+            form.MdiParent = this;
+            form.Show();
         }
     }
 }

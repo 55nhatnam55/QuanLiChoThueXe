@@ -6,11 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.XtraEditors;
 using System.Windows.Forms;
 
 namespace QuanLiDichVuChoThueXe
 {
-    public partial class searching : Form
+    public partial class searching : DevExpress.XtraEditors.XtraForm
     {
         public searching()
         {

@@ -44,5 +44,31 @@ namespace QuanLiDichVuChoThueXe
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<thanhtoan_Result>("[QL_ThuexeotoEntities].[thanhtoan](@makh)", makhParameter);
         }
+    
+        public virtual ObjectResult<ThongKePhieuThueTheoThoiGian_Result> ThongKePhieuThueTheoThoiGian(Nullable<System.DateTime> ngaybd, Nullable<System.DateTime> ngaykt)
+        {
+            var ngaybdParameter = ngaybd.HasValue ?
+                new ObjectParameter("ngaybd", ngaybd) :
+                new ObjectParameter("ngaybd", typeof(System.DateTime));
+    
+            var ngayktParameter = ngaykt.HasValue ?
+                new ObjectParameter("ngaykt", ngaykt) :
+                new ObjectParameter("ngaykt", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ThongKePhieuThueTheoThoiGian_Result>("ThongKePhieuThueTheoThoiGian", ngaybdParameter, ngayktParameter);
+        }
+    
+        public virtual ObjectResult<TopXethue_Result> TopXethue(Nullable<System.DateTime> ngaybd, Nullable<System.DateTime> ngaykt)
+        {
+            var ngaybdParameter = ngaybd.HasValue ?
+                new ObjectParameter("ngaybd", ngaybd) :
+                new ObjectParameter("ngaybd", typeof(System.DateTime));
+    
+            var ngayktParameter = ngaykt.HasValue ?
+                new ObjectParameter("ngaykt", ngaykt) :
+                new ObjectParameter("ngaykt", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TopXethue_Result>("TopXethue", ngaybdParameter, ngayktParameter);
+        }
     }
 }

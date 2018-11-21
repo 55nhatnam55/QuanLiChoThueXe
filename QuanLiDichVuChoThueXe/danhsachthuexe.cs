@@ -7,11 +7,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.XtraEditors;
 using System.Windows.Forms;
 
 namespace QuanLiDichVuChoThueXe
 {
-    public partial class danhsachthuexe : Form
+    public partial class danhsachthuexe : DevExpress.XtraEditors.XtraForm
     {
         public danhsachthuexe()
         {

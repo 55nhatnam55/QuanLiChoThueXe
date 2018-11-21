@@ -6,11 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.XtraEditors;
 using System.Windows.Forms;
 
 namespace QuanLiDichVuChoThueXe
 {
-    public partial class thanhtoan : Form
+    public partial class thanhtoan : DevExpress.XtraEditors.XtraForm
     {
 
         string tenkh, cmnd, songaymuon, dongiangay, maphieu, ngaylapphieu;
@@ -52,7 +53,7 @@ namespace QuanLiDichVuChoThueXe
         
         private void thanhtoan_Load(object sender, EventArgs e)
         {
-           
+            
             var ds = from tt in conectdb.tbl_PHIEUTHUE
                      select tt;
             dataGridView1.DataSource = ds.ToList();
@@ -61,6 +62,7 @@ namespace QuanLiDichVuChoThueXe
         
         private void button1_Click(object sender, EventArgs e)
         {
+            simpleButton3.Visible = true;
             dataGridView1.Visible = false;
             dataGridView2.Visible = true;
             var ds = (from tt in conectdb.tbl_THONGTINXE
@@ -93,12 +95,12 @@ namespace QuanLiDichVuChoThueXe
             txttongtien.Visible = true;
             txtmaphieu.Visible = true;
             lbmaphieu.Visible = true;
-            if (ngaylapphieu.Contains("02/14") || ngaylapphieu.Contains("04/30") || ngaylapphieu.Contains("12/22") || ngaylapphieu.Contains("05/01"))
-            {
-                txtcmnd.Text = cmnd;
-                txtnameKH.Text = tenkh;
-                txttongtien.Text = (dongia * songay).ToString();
-            }
+            //if (ngaylapphieu.Contains("02/14") || ngaylapphieu.Contains("04/30") || ngaylapphieu.Contains("12/22") || ngaylapphieu.Contains("05/01"))
+            //{
+            //    txtcmnd.Text = cmnd;
+            //    txtnameKH.Text = tenkh;
+            //    txttongtien.Text = (dongia * songay).ToString();
+            //}
                 if (count == 1)
             {
                 txtcmnd.Text = cmnd;
